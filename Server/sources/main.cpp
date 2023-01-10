@@ -11,12 +11,12 @@
 void handler(int socket, void * data)
 {
     std::cout << "Handler called with socket " << socket;
-    std::string str = *(std::string *)data;
-    std::cout << " Data is " << str << std::endl;
+    std::string *str = (std::string *)data;
+    std::cout << " Data is " << *str << std::endl;
 }
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-    server *s = new server(atoi(av[1]), &handler);
+    server s(atoi(argv[1]), &handler);
     return 0;
 }
